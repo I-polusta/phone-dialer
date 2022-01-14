@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="body">
+        <h3 id="dialed" class="text-center mt-5"></h3>
+        <div class="container mt-2">
+          <div class="row justify-content-center">
+            <div class="dialer__screen" style="width: 20rem">
+              <div class="container">
+                <div id="keys" class="row justify-content-center mt-5"></div>
+              </div>
+              <div class="container mt-4 rounded">
+                <div class="row">
+                  <div class="col text-center">
+                      <button class="btn  mr-4"><i class="fas fa-star"></i></button>
+                    <button id="call" class="btn btn-success mr-4">
+                          <i class="fas fa-phone"></i>
+                        </button>
+                    <button id="delete" class="btn btn-light">
+                          <i class="fas fa-backspace"></i>
+                        </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script >
+let keys = document.getElementById("keys");
+let dialed = document.getElementById("dialed");
+let keys__log = [
+  [1, ""],
+  [2, "ABC"],
+  [3, "DEF"],
+  [4, "GHI"],
+  [5, "JKL"],
+  [6, "MNO"],
+  [7, "PQRS"],
+  [8, "TUV"],
+  [9, "WXYZ"],
+  ["*", ""],
+  [0, ""],
+  ["#", ""]
+];
+let dialed__list = [];
+let delete__val = document.getElementById("delete");
+
+
+keys__log.forEach(numbers => {
+  keys.innerHTML += `
+    <button onclick="addNumbers(this.value)" class="btn btn-light m-1" style="width:5rem; hieght:10rem;" type="button" value="${
+      numbers[0]
+    }">${numbers[0]}<p>${numbers[1]}</p></button>`;
+});
+
+function addNumbers(numbers) {
+    dialed__list.push(numbers);
+  dialed.innerHTML = dialed__list.join("");
+}
+
+delete__val.addEventListener("click", () => {
+    dialed__list.pop();
+  dialed.innerHTML = dialed__list.join("");
+  console.log(dialed);
+});
+
+
+    </script>
+        
+</body>
+</html>
